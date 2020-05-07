@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="diagsys" language="groovy" pageWidth="560" pageHeight="500" orientation="Landscape" columnWidth="520" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="6dc6ca6c-2999-41d4-9d48-8c05bf2e8e03">
+	<property name="template.type" value="columnar"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" forecolor="#000000" fontName="Times New Roman" fontSize="50" isBold="false" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Times New Roman" fontSize="18" isBold="false" pdfFontName="Times-Roman"/>
+	<style name="Column header" forecolor="#666666" fontName="Times New Roman" fontSize="14" isBold="true" pdfFontName="Times-Roman"/>
+	<style name="Detail" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman"/>
+	<style name="Row" mode="Transparent" fontName="Times New Roman" pdfFontName="Times-Roman">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{REPORT_COUNT}%2 == 0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F0EFEF"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="logo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[select  Name,Gender,Age,Diagnosis_Date,Diagnosis_Result,Drug_Prescription, Doctor_Nurse,Symptoms from Patientinfo]]>
+	</queryString>
+	<field name="Name" class="java.lang.Object"/>
+	<field name="Gender" class="java.lang.Object"/>
+	<field name="Age" class="java.lang.Object"/>
+	<field name="Diagnosis_Date" class="java.lang.Object"/>
+	<field name="Diagnosis_Result" class="java.lang.Object"/>
+	<field name="Drug_Prescription" class="java.lang.Object"/>
+	<field name="Doctor_Nurse" class="java.lang.Object"/>
+	<field name="Symptoms" class="java.lang.Object"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="98" splitType="Stretch">
+			<image>
+				<reportElement x="2" y="0" width="118" height="98" uuid="0224d743-d3a5-46f8-907b-a64ed59d21e9"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="120" y="10" width="385" height="57" uuid="a3497137-71c0-4252-bb32-4207a5d63d19"/>
+				<textElement>
+					<font size="36" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSIS REPORT]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="120" splitType="Stretch">
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="70" y="34" width="50" height="20" forecolor="#000000" uuid="88e13b7a-fc5e-423e-9028-2c390e8c6762"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Gender:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="131" y="34" width="136" height="18" uuid="e71b9f05-f269-4d6d-aca1-096479112fe1"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Gender}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="70" y="58" width="50" height="18" forecolor="#000000" uuid="9aecb883-9f73-4346-a23a-951c0226731f"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Age:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="131" y="58" width="136" height="18" uuid="63c3fed9-f01e-4f47-b7f5-c10a24786169"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Age}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="276" y="56" width="107" height="20" forecolor="#000000" uuid="146855c9-2ffc-4bec-8bda-69ebe479c5cd"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Diagnosis Result:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="393" y="58" width="112" height="18" uuid="50b2320a-6861-4367-9e60-9dcde479334a"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Diagnosis_Result}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="276" y="10" width="107" height="20" forecolor="#000000" uuid="988c688b-dbd9-4088-bbd8-9cacfbc1fdb3"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Doctor/Nurse:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="276" y="80" width="107" height="20" forecolor="#000000" uuid="41145a2d-1b63-48d1-8a78-65ef7a959cae"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Drug Prescription:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="70" y="13" width="50" height="18" forecolor="#000000" uuid="d055fafd-e737-4643-8d6e-c5b658ae15de"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="131" y="13" width="136" height="17" uuid="024fc1fc-ff4e-4724-9a1b-1b8b30cdec1c"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Name}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="393" y="11" width="112" height="17" uuid="14e1f29e-e8e6-40fb-8077-4743e5b17986"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Doctor_Nurse}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="393" y="80" width="112" height="20" uuid="17cfc4ed-3696-4839-b6c8-08488f794600"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Drug_Prescription}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="70" y="77" width="71" height="20" forecolor="#000000" uuid="2f9b068e-896f-40ae-8c4d-3c89c7dbae07"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Symptoms:]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="151" y="80" width="116" height="17" uuid="4d93c831-1a0d-4d68-b951-d3b901e2e27b"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Symptoms}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Detail" positionType="Float" x="393" y="34" width="112" height="18" uuid="bd058dca-7b2b-41c7-b013-61d90f32d7da"/>
+				<textElement>
+					<font size="14" isBold="true" isItalic="true" pdfFontName="Times-Bold"/>
+				</textElement>
+				<textFieldExpression><![CDATA[""+$F{Diagnosis_Date}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" positionType="Float" x="276" y="32" width="107" height="20" forecolor="#000000" uuid="dc16f0f3-1b11-4170-99eb-2841406692f1"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<text><![CDATA[Diagnosis Date:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="11" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="5e965336-3728-49fe-9c25-9951d43d9334"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="13" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="2" y="0" width="518" height="13" forecolor="#FF0000" backcolor="#9DB1B8" uuid="9bf985bf-679a-40cf-baf8-a6458d138b3a"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="448" y="0" width="55" height="13" forecolor="#FFFFFF" uuid="70ea969d-b88e-44ee-a6ac-1d2a90764a41"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="368" y="0" width="80" height="13" forecolor="#FFFFFF" uuid="69ec2af9-d913-4f8b-8823-e050bcb62483"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				</textField>
+				<textField pattern="EEEEE dd MMMMM yyyy">
+					<reportElement style="Column header" x="2" y="0" width="197" height="13" forecolor="#FFFFFF" uuid="7ae7f6d1-9ff4-4ba4-a984-3b70eb739180"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>
